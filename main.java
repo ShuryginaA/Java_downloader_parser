@@ -20,8 +20,7 @@ public class main {
         throws IOException
     {
         String url = "https://www.simbirsoft.com/";
-        downloadWPage(url);
-        File file1 = new File("Z:\\NetBeansProjects\\Downloader", "Download.html");
+        File file1 = new File(downloadWPage(url));
         parseWPage(file1);
     }
     

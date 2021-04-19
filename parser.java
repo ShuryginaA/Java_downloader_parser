@@ -18,16 +18,12 @@ import java.util.*;
  */
 public class parser {
     
-//    private static Document getPage() throws IOException {
-//        String url = "https://jsoup.org";
-//        Document page = Jsoup.parse(new URL(url), 3000);
-//        return page;
-//    }
+   
+ public static void parseWPage( File htmlFile) throws IOException
     
-    public static void parseWPage( File htmlFile) throws IOException
-    {
+ {
      ArrayList<String> listOfSeparators = new ArrayList<>
-        (Arrays.asList(" ", ".", "!", "?", ";", ":", "[", "]", "(", ")","\n", "\r", "\t"));
+        (Arrays.asList(" ", ".", "\"", "!", "?", ";", ":", "[", "]", "(", ")","\n", "\r", "\t"));
      
      //covert html file to document
      Document page = Jsoup.parse(htmlFile, "UTF-8"); 
@@ -59,10 +55,8 @@ public class parser {
             
         }
          reader.close();
-     //make the output sorted 
-          SortedSet<Word> sortedWords = new TreeSet<Word>(countMap.values());
       
-        for (Word w : sortedWords) {
+        for (Word w :countMap.values() ) {
             System.out.println( w.word + "\t" + w.count);
         }
      

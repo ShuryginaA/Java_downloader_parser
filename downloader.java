@@ -15,15 +15,18 @@ import java.net.MalformedURLException;
   
 public class downloader {
   
-    public static void downloadWPage(String wpage)
+    public static String downloadWPage(String wpage)
     {
+        String fileName="Download.html";
         try {
             URL url = new URL(wpage);
             BufferedReader reader = 
-              new BufferedReader(new InputStreamReader(url.openStream()));
-            FileWriter fileWritr=new FileWriter("Download.html");
+              new BufferedReader(new InputStreamReader(url.openStream()));           
+            
+            FileWriter fileWritr=new FileWriter(fileName);
             BufferedWriter writer = 
               new BufferedWriter(fileWritr);
+            
             String tmpLine;
             while ((tmpLine = reader.readLine()) != null) {
                 writer.write(tmpLine);
@@ -31,7 +34,7 @@ public class downloader {
             reader.close();
             writer.close();
             System.out.println("Downloaded\n");
-            
+           
            
         }
         catch (MalformedURLException mue) {
@@ -40,5 +43,6 @@ public class downloader {
         catch (IOException ie) {
             System.out.println("IOException");
         }
+        return fileName; 
     }
 }
